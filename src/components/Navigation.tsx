@@ -1,0 +1,6 @@
+import { ClipboardList, HeartPulse, Home, Leaf, UserRound } from 'lucide-react';
+import { Icon } from './Icon';
+export type View = 'patient' | 'doctor' | 'case' | 'summary' | 'history';
+const patientItems = [{label:'Home',icon:Home,view:'patient'},{label:'Records',icon:ClipboardList,view:'history'},{label:'AYUSH',icon:Leaf,view:'patient'},{label:'Profile',icon:UserRound,view:'patient'}] as const;
+export function BottomNav({view,setView}:{view:View;setView:(view:View)=>void}) { return <nav className="bottom-nav" aria-label="Patient navigation">{patientItems.map(({label,icon,view: next})=><button key={label} onClick={()=>setView(next)} className={view === next && (next !== 'patient' || label === 'Home') ? 'active' : ''}><Icon icon={icon}/><span>{label}</span></button>)}</nav> }
+export function SideNav({view,setView,role}:{view:View;setView:(view:View)=>void;role:'patient'|'doctor'}) { const items=role==='patient'?patientItems:[{label:'Overview',icon:Home,view:'doctor'},{label:'Patients',icon:HeartPulse,view:'doctor'},{label:'Cases',icon:ClipboardList,view:'doctor'},{label:'Profile',icon:UserRound,view:'doctor'}] as const; return <aside className="sidebar">{items.map(({label,icon,view:next})=><button key={label} onClick={()=>setView(next)} className={view===next?'active':''}><Icon icon={icon}/>{label}</button>)}</aside> }
