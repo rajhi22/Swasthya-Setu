@@ -5,3 +5,5 @@ export type IntakeAnswers = Partial<Record<Question['id'], string>>;
 export type DocumentCategory = 'Prescriptions' | 'Lab Reports' | 'Medical Records' | 'Other';
 export type PatientDocument = { id: string; name: string; category: DocumentCategory; type: string; date: string; status: 'Verified' | 'Needs verification' | 'Uploaded' };
 export type AyushProfile = { system: string; prakriti: string; vikriti: string; ahaar: string; lifestyle: string; sleep: string; remedies: string };
+export type DoctorCaseStatus = 'AI Case Summary Ready' | 'Pending Review' | 'In Progress' | 'Completed';
+export type DoctorPatientCase = { id: string; patientName: string; initials: string; age: number; sex: string; patientId: string; appointmentTime: string; chiefComplaint: string; description: string; status: DoctorCaseStatus; completed: boolean; caseAnswers?: IntakeAnswers };
