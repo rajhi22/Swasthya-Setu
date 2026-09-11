@@ -1,0 +1,1 @@
+import { Schema,model } from 'mongoose'; export const AYUSHProfile=model('AYUSHProfile',new Schema({patient:{type:Schema.Types.ObjectId,ref:'PatientProfile',required:true,unique:true},system:{type:String,required:true},prakriti:String,vikriti:String,ahaar:String,lifestyle:String,sleep:String,remedies:String},{timestamps:true}));

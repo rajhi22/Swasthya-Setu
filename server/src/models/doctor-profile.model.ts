@@ -1,0 +1,1 @@
+import { Schema,model } from 'mongoose'; export const DoctorProfile=model('DoctorProfile',new Schema({user:{type:Schema.Types.ObjectId,ref:'User'},doctorId:{type:String,required:true,unique:true},displayName:{type:String,required:true},specialization:String},{timestamps:true}));

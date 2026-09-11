@@ -1,8 +1,22 @@
-# Swasthya Setu UI MVP
+# Swasthya Setu
 
 Responsive React + TypeScript prototype for a patient and clinician healthcare portal. All displayed identities and medical records are fictional demo data.
 
-## Run locally
+## Architecture
+
+```text
+React / Vite
+    ↓
+Express API (/api/v1)
+    ↓
+Services
+    ↓
+Mongoose
+    ↓
+MongoDB
+```
+
+## Frontend
 
 ```sh
 npm install
@@ -16,3 +30,32 @@ Use the small **Patient view / Doctor view** switch in the upper right to review
 `src/services/mockService.ts` is the single source for typed mock records and question definitions. Replace this module with API calls or an adapter when the Express/MongoDB backend is introduced; view components do not depend on hard-coded network calls.
 
 The summary is intentionally labelled AI-assisted and never diagnoses a patient. It requires clinician verification.
+
+## Backend setup (Phase 3A–3C)
+
+Copy `server/.env.example` to `server/.env`, configure MongoDB, then run:
+
+```sh
+npm run server:dev
+```
+
+For a production-style compile/run:
+
+```sh
+npm run server:build
+npm run server:start
+```
+
+Environment variables: `PORT`, `NODE_ENV`, `CLIENT_URL`, and `MONGODB_URI`.
+
+Implemented patient endpoints:
+
+- `GET /api/v1/health`
+- `GET /api/v1/patients/:patientId`
+- `POST|GET /api/v1/patients/:patientId/cases`
+- `GET|PATCH /api/v1/patients/:patientId/cases/:caseId`
+- `POST|GET /api/v1/patients/:patientId/vitals`
+- `PUT|GET /api/v1/patients/:patientId/ayush`
+- `GET /api/v1/patients/:patientId/history`
+
+The API generates persistent human-readable IDs (`SS-S001`, etc.) using an atomic MongoDB counter. Authentication and authorization are intentionally not implemented; `patientId` is a temporary request-scoping mechanism, not proof of identity. Doctor APIs, consultation APIs, file storage, OCR, real AI, and production security hardening remain future work.

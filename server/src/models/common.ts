@@ -1,0 +1,2 @@
+import { Schema } from 'mongoose';
+export const intakeSchema = new Schema({ complaint:{type:String,required:true,trim:true}, duration:{type:String,required:true}, severity:{type:String,required:true}, symptoms:{type:[String],default:[]}, medications:{type:[String],default:[]}, allergies:{type:String,default:''}, healthHistory:{type:String,default:''}, redFlags:{type:[String],default:[]}, verificationNeeded:{type:[String],default:[]} },{_id:false});

@@ -1,0 +1,2 @@
+import mongoose from 'mongoose'; import { app } from './app.js'; import { connectDatabase } from './config/database.js'; import { env } from './config/env.js';
+async function start(){await connectDatabase();const server=app.listen(env.port,()=>console.info(`API listening on port ${env.port}`));const close=async()=>{server.close();await mongoose.disconnect();process.exit(0)};process.on('SIGTERM',close);process.on('SIGINT',close)} start().catch(()=>{console.error('Database connection failed. Check MONGODB_URI and MongoDB availability.');process.exit(1)});

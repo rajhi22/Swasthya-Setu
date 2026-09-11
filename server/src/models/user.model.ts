@@ -1,0 +1,1 @@
+import { Schema,model } from 'mongoose'; export const User=model('User',new Schema({role:{type:String,enum:['patient','doctor','admin','publicHealth'],required:true},email:{type:String,trim:true,lowercase:true},name:{type:String,required:true,trim:true}},{timestamps:true}));

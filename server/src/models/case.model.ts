@@ -1,0 +1,2 @@
+import { Schema,model } from 'mongoose'; import { intakeSchema } from './common.js';
+export const PatientCase=model('Case',new Schema({caseId:{type:String,required:true,unique:true,index:true},patient:{type:Schema.Types.ObjectId,ref:'PatientProfile',required:true,index:true},intake:{type:intakeSchema,required:true},status:{type:String,enum:['pending_review','reviewed','consultation_in_progress','completed'],default:'pending_review'},submittedAt:{type:Date,default:Date.now,index:true}},{timestamps:true}).index({patient:1,caseId:1},{unique:true}));
