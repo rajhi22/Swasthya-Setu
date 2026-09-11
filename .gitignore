@@ -1,0 +1,9 @@
+# Generated dependencies are installed per environment; never commit them.
+node_modules/
+
+# Build output
+dist/
+
+# Local tooling files
+.vite/
+*.tsbuildinfo
