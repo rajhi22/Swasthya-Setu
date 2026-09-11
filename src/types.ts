@@ -7,3 +7,7 @@ export type PatientDocument = { id: string; name: string; category: DocumentCate
 export type AyushProfile = { system: string; prakriti: string; vikriti: string; ahaar: string; lifestyle: string; sleep: string; remedies: string };
 export type DoctorCaseStatus = 'AI Case Summary Ready' | 'Pending Review' | 'In Progress' | 'Completed';
 export type DoctorPatientCase = { id: string; patientName: string; initials: string; age: number; sex: string; patientId: string; appointmentTime: string; chiefComplaint: string; description: string; status: DoctorCaseStatus; completed: boolean; caseAnswers?: IntakeAnswers };
+export type ConsultationNotes = { reason: string; observations: string; clinicalNotes: string; assessment: string; plan: string };
+export type ConsultationVitals = { temperature: string; bloodPressure: string; heartRate: string; spo2: string; bloodGlucose: string };
+export type ConsultationMedication = { id: string; name: string; dosage: string; frequency: string; duration: string; instructions: string };
+export type ConsultationDraft = { notes: ConsultationNotes; vitals: ConsultationVitals; medications: ConsultationMedication[]; saved: boolean; completed: boolean };
