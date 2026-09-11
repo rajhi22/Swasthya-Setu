@@ -11,3 +11,4 @@ export type ConsultationNotes = { reason: string; observations: string; clinical
 export type ConsultationVitals = { temperature: string; bloodPressure: string; heartRate: string; spo2: string; bloodGlucose: string };
 export type ConsultationMedication = { id: string; name: string; dosage: string; frequency: string; duration: string; instructions: string };
 export type ConsultationDraft = { notes: ConsultationNotes; vitals: ConsultationVitals; medications: ConsultationMedication[]; saved: boolean; completed: boolean };
+export type SessionCase = DoctorPatientCase & { submittedAt: string; consultation?: ConsultationDraft };
