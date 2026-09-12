@@ -48,6 +48,8 @@ npm run server:start
 
 Environment variables: `PORT`, `NODE_ENV`, `CLIENT_URL`, and `MONGODB_URI`. `CLIENT_URL` accepts a comma-separated allowlist of frontend origins (for example, `https://swasthya-setu-orcin.vercel.app,http://localhost:5173`).
 
+Authentication requires a server-only `JWT_SECRET`; never place it in a frontend `VITE_*` variable. Development-only demo accounts are created with `npm run seed:demo`: `aisha.demo@swasthyasetu.local` and `amelia.demo@swasthyasetu.local`, both using `SwasthyaDemo!2026`.
+
 For the frontend API layer, copy `.env.example` to `.env` and set `VITE_API_BASE_URL` to the deployed or local `/api/v1` URL. The API client exposes clear errors when the backend is unavailable and does not claim session fallback data is persisted.
 
 Implemented patient endpoints:

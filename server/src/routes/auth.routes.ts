@@ -1,0 +1,1 @@
+import { Router } from 'express'; import * as c from '../controllers/auth.controller.js'; import { requireAuth } from '../middleware/auth.middleware.js'; export const authRouter=Router();authRouter.post('/login',c.login);authRouter.get('/me',requireAuth,c.me);authRouter.post('/logout',requireAuth,c.logout);

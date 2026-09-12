@@ -1,0 +1,4 @@
+import { createHmac, timingSafeEqual } from 'node:crypto'; import { env } from '../config/env.js';
+type Claims={sub:string;role:string;exp:number};const encode=(value:object)=>Buffer.from(JSON.stringify(value)).toString('base64url');const sign=(value:string)=>createHmac('sha256',env.jwtSecret).update(value).digest('base64url');
+export function createAccessToken(sub:string,role:string){const header=encode({alg:'HS256',typ:'JWT'}),payload=encode({sub,role,exp:Math.floor(Date.now()/1000)+60*60});return `${header}.${payload}.${sign(`${header}.${payload}`)}`;}
+export function verifyAccessToken(token:string):Claims|null{const parts=token.split('.');if(parts.length!==3)return null;const expected=sign(`${parts[0]}.${parts[1]}`);if(!timingSafeEqual(Buffer.from(parts[2]),Buffer.from(expected)))return null;try{const claims=JSON.parse(Buffer.from(parts[1],'base64url').toString()) as Claims;return claims.exp>Math.floor(Date.now()/1000)?claims:null;}catch{return null;}}

@@ -7,3 +7,6 @@ dist/
 # Local tooling files
 .vite/
 *.tsbuildinfo
+.env
+server/.env
+work/.npm-cache/
