@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "server:dev": "tsx watch server/src/server.ts",
     "server:build": "tsc -p server/tsconfig.json",
+    "seed:demo": "npm run server:build && node server/dist/scripts/seed-demo.js",
     "server:start": "node server/dist/server.js"
   },
   "dependencies": {

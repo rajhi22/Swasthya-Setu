@@ -1,0 +1,1 @@
+import { api } from './apiClient'; export const doctorApi={cases:(doctorId:string)=>api.get<any[]>(`/doctors/${doctorId}/cases`),case:(doctorId:string,caseId:string)=>api.get<any>(`/doctors/${doctorId}/cases/${caseId}`),status:(caseId:string,status:string)=>api.patch<any>(`/cases/${caseId}/status`,{status})};

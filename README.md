@@ -48,6 +48,8 @@ npm run server:start
 
 Environment variables: `PORT`, `NODE_ENV`, `CLIENT_URL`, and `MONGODB_URI`.
 
+For the frontend API layer, copy `.env.example` to `.env` and set `VITE_API_BASE_URL` to the deployed or local `/api/v1` URL. The API client exposes clear errors when the backend is unavailable and does not claim session fallback data is persisted.
+
 Implemented patient endpoints:
 
 - `GET /api/v1/health`

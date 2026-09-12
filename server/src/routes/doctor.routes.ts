@@ -1,0 +1,1 @@
+import { Router } from 'express'; import * as c from '../controllers/doctor.controller.js'; export const doctorRouter=Router();doctorRouter.get('/:doctorId/cases',c.list);doctorRouter.get('/:doctorId/cases/:caseId',c.detail);
